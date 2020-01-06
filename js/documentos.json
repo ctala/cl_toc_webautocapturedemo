@@ -1,0 +1,46 @@
+var documents = [
+	{
+		value: 'ARG1', 
+		name: 'DNI'
+	},
+	{
+		value: 'CHL1', 
+		name: 'Cédula antigua'
+	},
+	{
+		value: 'CHL2', 
+		name: 'Cédula nueva'
+	},
+	{
+		value: 'COL1',
+		name: 'Cédula'
+	},
+	{
+		value: 'PER1', 
+		name: 'DNI Azul'
+	}, 
+	{
+		value: 'PER2', 
+		name: 'DNI Electrónico'
+	}, 
+	{
+		value: 'PER3', 
+		name: 'Documento Extranjeria'
+	},
+	{
+		value: 'MEX1', 
+		name: 'Credencial para votar'
+	},
+	{
+		value: 'MEX2', 
+		name: 'Credencial para votar nueva'
+	},
+	{
+		value: 'GBR1', 
+		name: 'Cédula identidad'
+	},
+	{
+		value: 'PHL1', 
+		name: 'ID Postal'
+	},
+];

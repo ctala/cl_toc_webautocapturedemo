@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title data-localize="title-app">DEMO WEB TOC AUTOCAPTURA</title>
+  <!-- MDB icon -->
+  <link rel="icon" href="img/genico.ico" type="image/x-icon">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <!-- Material Design Bootstrap -->
+  <link rel="stylesheet" href="css/mdb.min.css">
+  <!-- Your custom styles (optional) -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!--Navbar-->
+<nav class="navbar top">
+       <a class="nav-brand" href=""> <img id="imgTitulo" src="img/7oc.png" alt=""></a>
+        <div class="lang float-right">
+          <button data-lang="es" id="es" class="btn btn-sm btn-primary">ES</button>
+          <button data-lang="en" id="en" class="btn btn-sm btn-primary">EN</button>
+          <input type="hidden" name="lang" value="">
+        </div>
+        
+</nav>
+  <!--/.Navbar-->
+  <div class="loading">Loading&#8230;</div>
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="home-tab" data-toggle="tab" data-localize="title-tab" href="#home" role="tab" aria-controls="home"
+            aria-selected="true">AUTOCAPTURA</a>
+        </li>
+        <li class="nav-item" hidden="hidden">
+          <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile"
+            aria-selected="false">Otro</a>
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+             <!-- Content -->
+      <div id="uiDivPrincipal" class="container container-fluid">
+            <div class="card-body">
+            </div>
+            <div id="uiDivVerificacion" class="card">
+                <div class="card-body">
+                    <h5 class="card-title" data-localize="intro-title">VERIFICACIÓN DE IDENTIDAD FACIAL AUTOCAPTURA</h5>
+                    <h6 class="card-subtitle mb-2 text-muted"></h6>
+                    <p class="card-text" data-localize="intro-subtitle">Para verificar su identidad se necesitan fotos de su cédula de identidad y rostro, <b>siguiendo los pasos que te mostraremos a continuación</b></p>
+                    <p class="card-text" data-localize="intro-subtitle2">Evite usar accesorios como lentes o sombreros</p>
+                    <p id="textSelect" class="card-text" data-localize="select-verification">Seleccione el tipo de documento para comenzar con la verificación.</p>
+                      <!--Dropdown primary-->
+                    <div class="dropdown">
+                        <!--Trigger-->
+                        <div class="text-center">
+                          <button class="btn btn-primary dropdown-toggle" data-localize="document-type" type="button" id="dropdownMenu1" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">Tipo Documento</button>
+                            <div class="dropdown-menu dropdown-dark" id="tableMenu">
+                                    <a class="dropdown-item" href="#">
+                                        <span style="display:none" data-localize="CHL1">
+                                        Cédula Antigua CHL1
+                                        </span>
+                                        <img id="imgPhotosCI" src="img/ci-old-front.jpg" alt="">
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        <span style="display:none" data-localize="CHL2">
+                                        Cédula Nueva CHL2 
+                                        </span>
+                                        <img id="imgPhotosCI" src="img/ci_front.png" alt=""></a>
+                                    </a>   
+                                    <a class="dropdown-item" href="#">
+                                        <span style="display:none" data-localize="PER1">
+                                        Cédula Antigua PER1
+                                        </span>
+                                        <img id="imgPhotosCI" src="img/ci_pe_old.jpg" alt="">
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        <span style="display:none" data-localize="PER2">
+                                        Cédula Nueva PER2
+                                        </span>
+                                        <img id="imgPhotosCI" src="img/dni_front_peru.png" alt="">
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        <span style="display:none" data-localize="COL1">
+                                        Cédula COL1
+                                        </span>
+                                        <img id="imgPhotosCI" src="img/ci_front_col.png" alt="">
+                                    </a>
+                            </div> 
+                            
+                        </div>
+                    </div>
+                    <!--<div class="row" id="camaras" hidden="hidden">
+                        <div class="col">
+                            <div class="form-inline cameras" style="margin-bottom: 1%;">
+                                <label for="videoSource" style="margin-right: 10px; " data-localize="select-camera">Seleccionar Cámara:</label>
+                                <select id="videoSource" class="custom-select col-6"></select>
+                            </div>
+                        </div>
+                    </div>-->
+                    <!--/Dropdown primary-->
+                    <div id="restart" class="text-center" hidden="hidden">
+                    <button type="button" id="btn-restart" data-localize="new-verification" class="btn btn-primary text-center"></button>
+                    </div>
+                    <div></div>
+                    <div id="uiDivOKDoc" class="text-center"> 
+                        <img id="imgOkFront" class="imgDoc" src="img/doc-ok.png" alt="" hidden="true">
+                        <img id="imgOkBack"  class="imgDoc" src="img/doc-back-ok.PNG" alt="" hidden="true">
+                        <img id="imgOkFace"  class="imgFaceOK" src="img/face-ok.png" alt="" hidden="true">
+                    </div>
+                    <h5 class="card-title text-center" id="front" hidden="hidden" data-localize="front-id-subtitle"></h5>
+                    <h5 class="card-title text-center" id="back" hidden="hidden" data-localize="back-id-subtitle"></h5>
+                    <div class="text-center uiDivAutocaptura" id="autocaptura" hidden="hidden">  
+                        <div id="container"> <!-- este es el div de autocaptura y debe estar vacio-->
+                        </div>
+                    </div>
+                    <div class="text-center uiDivAutocaptura">
+                            <h5 class="card-title" id="textByLiveness" data-localize="selfie-subtitle" hidden="hidden"></h5> 
+                            <div id="liveness"> <!-- este es el div de liveness y debe estar vacio-->
+                            </div>
+                    </div>        
+                    <!-- Inicio Resultado -->
+                    <div hidden="hidden" role="tabpanel" id="uiDivDialogResponse" >
+                        <fieldset>
+                            <h2 class="fs-title"><span data-localize="result-title">Resultado</span></h2>
+                            <h3 class="fs-subtitle text-center" data-localize="result-subtitle">Resultado verificación facial</h3>
+                            <div class="result">
+                                <div class="row">
+                                    <div class="col-8 mx-auto">
+                                        <div class="card match">
+                                            <div class="card-body">
+                                                <!-- Token transacción -->
+                                                <h5 class="modal-title token">Token: 
+                                                  <label id="toc_token" class="list-group-item text-center"></label>
+                                                </h5>
+                                                <hr>
+                                                <!-- ícono resultado positivo biometría 2 -->
+                                                <div class="positive" style="display:none;">
+                                                    <div id="success">
+                                                        <svg class="tickmark" viewBox="0 0 52 52">
+                                                            <circle class="circle" cx="26" cy="26" r="25" fill="none" />
+                                                            <path class="tick" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <!-- ícono resultado positivo biometría 1 -->
+                                                <div class="warning" style="display:none;">
+                                                    <div id="info">
+                                                        <svg class="tickmark" viewBox="0 0 52 52">
+                                                            <circle class="circle" cx="26" cy="26" r="25" fill="none" />
+                                                            <path class="tick" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <!-- ícono resultado negativo biometría -->
+                                                <div class="negative" style="display:none;">
+                                                    <div id="error">
+                                                        <svg class="crossmark" viewBox="0 0 52 52">
+                                                            <circle class="circle" cx="26" cy="26" r="25" fill="none" />
+                                                            <line class="cross" x1="14.1" y1="15.1" x2="37.5" y2="38.6" />
+                                                            <line class="cross late" x1="37.6" y1="15.2" x2="14.1" y2="38.5" />
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <!-- Resultado biométrico -->
+                                                <h5 class="fs-title text-center">
+                                                    <span data-localize="match-facial">Match Biométrico: </span> <span class="confidence"></span></h5>
+                                                <!-- datos del documento -->
+                                                <div class="info-doc">
+                                                    <br>
+                                                    <h5 class="card-title text-center" data-localize="document-info">Información Documento
+                                                        <a class="btn btn-sm btn-outline-success link-rc" href="javascript:void(0)" style="display:none;">Registro Civil</a>
+                                                    </h5>
+                                                    <ul class="list-group mrz-data">
+                                                        <li class="list-group-item rut"><span data-localize="rut">Rut: </span><label id="rut"></label><strong></strong></li>
+                                                        <li class="list-group-item n-serie"><span data-localize="serial-number">N° Serie: </span><label id="serial-number"></label><strong></strong></li>
+                                                        <li class="list-group-item names"><span data-localize="names">Nombres: </span><label id="names"></label><strong></strong></li>
+                                                        <li class="list-group-item lastnames"><span data-localize="lastnames">Apellidos: </span><label id="lastnames"></label><strong></strong></li>
+                                                        <li class="list-group-item gender"><span data-localize="gender">Genero: </span><label id="gender"></label><strong></strong></li>
+                                                        <li class="list-group-item country"><span data-localize="country">Nacionalidad: </span><label id="country"></label><strong></strong></li>
+                                                        <li class="list-group-item date-birth"><span data-localize="date-birth">Fecha Nacimiento: </span><label id="date-birth"></label><strong></strong></li>
+                                                        <li class="list-group-item date-expire"><span data-localize="date-expire">Fecha Vencimiento: </span><label id="expire-date"></label><strong></strong></li>
+                                                    </ul>
+                                                    <ul class="list-group data" style="display:none;"></ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                  </div>
+                  <!-- Fin Resultado -->
+                </div>
+            </div>
+        </div>
+        <!-- Content -->
+        <!-- Inicio Modal error resultado facial -->
+    <div class="modal fade" id="error_facial" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title mx-auto"><span data-localize="verification">Verificación</span>: <span class="text-danger" data-localize="negative">Negativa</span></h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-lg-12">
+                            <div class="container mb-2">
+                                <!--<h6 class="modal-title token">Token: <span class="badge badge-light"></span></h6>-->
+                                <span data-localize="error-process-photos">La captura de las 3 fotos estan OK pero ocurrió un error en la verificación de identidad.</span>
+                                <span data-localize="check-photos">Repite el proceso nuevamente y asegurate de seguir los pasos correctamente, trata de no usar lentes ni gorros ni nada que afecte tu imagen facial.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Fin Modal errores resultado facial -->
+        </div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+        </div>
+      </div>
+
+  <!-- Footer -->
+  <footer id="footer" class="footerToc">
+    <div class="footerContainer footer-copyright text-center">
+        <span class="">© 2019 TOC Biometrics</span>
+    </div>
+  </footer>
+  <!-- Footer -->
+
+  <!-- jQuery -->
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="js/mdb.min.js"></script>
+  <!-- Your custom scripts (optional) -->
+  <script type="text/javascript" src="js/app.js"></script>
+  <script src="https://sandbox-autocapture-web.toc.ai/autocapture.js"></script>
+  <script src="https://liveness-web.toc.ai/js/liveness.js"></script>
+  <script src="https://cdn.webrtc-experiment.com/DetectRTC.js"></script>
+  <script src="js/localize/jquery.localize.min.js"></script>
+  <script src="locale/lang.js"></script>
+  <script src="js/ci_codes.js"></script>
+  <script src="js/sweetalert.js"></script>
+  <script type="text/javascript"></script>
+
+</body>
+</html>
